@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html setDpr='7.5'>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-itunes-app" content="app-id=1026789253">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="baidu-site-verification" content="VbHljNQhTs">
+    <meta name="x5-orientation" content="portrait|landscape">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <title>礼遇圣诞·翻转2019</title>
+    <link rel="apple-touch-icon-precomposed" href="/themes/img/logo_icon.png" />
+    <link rel="stylesheet" href="css/0a6e98f8cec1ac5.css">
+    <link rel="stylesheet" href="css/cd96fd971b442fd.css">
+    <style>html,body{
+            scroll-behavior: smooth;
+        }
+        .flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        .flex-v {
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+        }
+        .flex-h {
+            -webkit-box-orient: horizontal;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+        .flex-1 {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+        .flex-align-center {
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+        .flex-pack-center {
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        .flex-pack-justify {
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+        @media screen and (min-width: 320px){
+            html { font-size: 14px;}
+        }
+        @media screen and (min-width: 325px) and (max-width: 380px){
+            html { font-size: 16px; }
+        }
+        @media screen and (min-width: 392px){
+            html { font-size: 18px;}
+        }</style>
+    <style>.share {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+.share .share_btn{
+    padding: 10px 0;
+    width: 45%;
+    margin: 0 auto;
+    background:linear-gradient(to bottom, #ffdc51 10%, #ff7814);
+    background: -webkit-linear-gradient(to bottom, #ffdc51 10%, #ff7814);
+    border-radius: 20px;
+    box-shadow: 0 3px 4px rgba(0,0,0,.2);
+}
+
+/*邀请好友*/
+.cs_hide{
+    display: none;
+}
+.share-pop{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    color:#fff;
+    overflow:hidden;
+    background:rgba(0,0,0,.6);
+    z-index: 2000;
+}
+.share-pop{
+    background:url(images/c3660dfcd3748d3.png) no-repeat top right rgba(0,0,0,0.85);
+    background-size:250px 268px;
+}  
+.share-app-pop-v2{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:rgba(0,0,0,0.85);
+    z-index:2000;
+    font-size: 12px;
+}
+
+.share-app-pop-v2 .share-app-pop-v2-box{
+    position: fixed;
+    left: 0; 
+    right: 0;
+    bottom: 0;
+    z-index: 6;
+    background: #ffffff;
+    padding-top:15px;
+}
+.share-app-pop-v2 .share-app-pop-v2-box .share-tit{
+    text-align: center;
+    font-size: 15px;
+    color: #3a3a3a;
+}
+.share-app-pop-v2 .share-message,.wrapper-invite-v2 .share-app-pop-v2 .share-timeline{
+    position: relative;
+    display:inline-block;
+    background: #fff;
+    color:#3a3a3a;
+    font-size:14px;
+    border-radius: 4px;
+    line-height: 130px;
+    width:100px;
+}
+.share-app-pop-v2 .share-message i{
+    width:48px;
+    height: 48px;
+    display: block;
+    background: url(images/d0bdd7ce1efc5f9.png) no-repeat center top;
+    background-size: 100%;
+}
+.share-app-pop-v2 .share-timeline i{
+    width:48px;
+    height: 48px;
+    display: block;
+    background: url(images/9e0ef6973adf37e.png) no-repeat center top;
+    background-size: 100%;
+}
+.share-app-pop-v2 .close-share-v2{
+    width: 100%;
+    height: 50px;
+    background: url(images/3f3c4c19c845bb96327c86aace61a05c.jpg) no-repeat center;
+    background-size: 20px 20px;
+} 
+
+.invite-you-v2 {
+    font-size: 12px;
+}
+.wx-friend-icon{
+    width:48px;
+    height: 48px;
+    margin:0 auto 5px;
+    display: block;
+    background: url(images/24eed127d733993.png) no-repeat;
+    background-size: cover;
+}
+.quan-friend-icon{
+    width:48px;
+    height: 48px;
+    margin:0 auto 5px;
+    display: block;
+    background: url(images/9e0ef6973adf37e.png) no-repeat;
+    background-size: cover;
+}
+
+/*邀请好友*/</style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="app"></div>
+        <!--邀请好友-->
+        <div class="share-app-pop-v2 cs_hide">
+            <div class="share-app-pop-v2-box">
+            <h2 class="share-tit">分享到</h2>
+            <div class="ncf-box">
+                <div class="j-item item wx-friend" data-type="message" data-ncflog="{ps:'h5_yq_py'}"><span class="wx-friend-icon"></span><span>微信好友</span></div>
+                <div class="j-item item wx-quanzi" data-type="timeline" data-ncflog="{ps:'h5_yq_quan'}"><span class="quan-friend-icon"></span><span>朋友圈</span></div>
+            </div>
+            <div class="close-share-v2" data-ncflog="{ps:'h5_yq_close'}">
+            </div>
+            </div>
+        </div>
+        <div class="share-pop cs_hide"></div>
+        <!--邀请好友-->
+    </div>
+<input type="hidden" name="reqtoken" value="470707098273b5a96bc8c45529a8246059d9e4dcb7adac674145534031f1a8f8">
+<input type="hidden" name="hq_profit_7_day" value="3.00">
+<input type="hidden" name="encrpt_ukey" value="cd98f00b204e9800998ecf8427e">
+
+
+<nav></nav><!--QDAS打点-->
+
+<script src="js/26098eb144ae37a.js" ></script>
+<script>monitor.setProject('QH_297_1').getTrack().getClickHeatmap();</script>
+<script type="text/javascript">var IF_JR = '0'
+    var NCFGLOBAL_CONFIG = {"profit_info":{"profit_7_day":"3.00","profit_amount":"0.8111","productCode":"HQB","profit7day":"3.00","profitAmount":"0.8111","dailyNet":null,"disProfitRadio":"3.00","disProfitRadioDesc":"\u6628\u65e5\u5e74\u5316","vipProfit7day":3.15,"vipProfitAmount":"0.8521"},"userinfo":null,"ua_v":2,"pro_type_list":{"HUOQI":1,"DINGQI":2,"GUDINGFUDONG":3,"JIJIN":4,"BAOXIAN":5,"ZHONGCHOU":6,"DINGCUN":7,"DINGCUN_V2":8,"GUOTAI_HB":9,"NANFANG_HB":10,"P2P_V2":50,"RESV":10001,"LICAILE":86100001,"TTY":86100002,"BILL":86100003,"FLOW":86100004,"JIJIN_QILU_ZIGUAN":1,"DINGQI_GUSHOU":4},"is_jr_app":0,"is_stk_app":0,"is_ncf_app":0,"urls":{"hq_url":"https:\/\/m.nicaifu.com\/hq","dq_list_url":"https:\/\/m.nicaifu.com\/dq\/more","dq_amount_url":"https:\/\/m.nicaifu.com\/dq\/amount","dq_detail_url":"https:\/\/m.nicaifu.com\/dq","fund_list_url":"https:\/\/m.nicaifu.com\/fund"},"ncf_api_domain":"https:\/\/api.nicaifu.com","t7_info":{"t7_code":"DC2803","t7_type":7},"plus7_info":{"code":"DC0701","type":7},"bx_open":1,"dc_open":1,"fund_open":1,"index_url":"https:\/\/m.nicaifu.com","safe_agency_index_url":"https:\/\/m.nicaifu.com\/safe","is_safe_agency_client":false,"is_app_3_0":false,"is_show_down":1,"is_show_down_sms":0,"time":1548212756,"interval_time":{"huoqi":60000,"dingqi":60000,"transfer":60000}};
+    /*惊鸿统计*/
+/*
+    (function() {
+        var jhd_params = {
+            jhd_appkey : 'ncf_ws',
+            jhd_isTest : false,
+            jhd_uid : (NCFGLOBAL_CONFIG.userinfo ? NCFGLOBAL_CONFIG.userinfo.mid : '') || '',
+        };
+        window.jhd_params = jhd_params;
+        window._JHsdk = {action:function(p){try{p.callback();}catch(ex){}}};
+        var _JHjs = document.createElement('script');
+        _JHjs.type='text/javascript';
+        _JHjs.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cloud.jhddg.com/jhsdk_js.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(_JHjs, s);
+    })();
+*/
+    window._JHsdk = {action:function(p){try{p.callback();}catch(ex){}}};</script>          
+<!--uc统计代码-->
+<script type="text/javascript">(function(w,d,t,s,q,m,n){if(w.utq)return;q=w.utq=function(){q.process?q.process(arguments):q.queue.push(arguments);};q.queue=[];m=d.getElementsByTagName(t)[0];n=d.createElement(t);n.src=s;n.async=true;m.parentNode.insertBefore(n,m);})(window,document,'script','https://image.uc.cn/s/uae/g/0s/ad/utracking.js');utq('set', 'convertMode', true);utq('set', 'trackurl', 'huichuan.sm.cn/lp');</script>
+
+<script src="js/293e9a1895dec87.js" defer ></script>
+
+
+</body>
+<script type="text/javascript" src="js/4d0086f39a6b281.js" ></script>
+<script type="text/javascript" src="js/f9ba1380580e5fe.js" ></script>
+<script type="text/javascript" src="js/73b2428baf235f0.js" ></script>
+<script type="text/javascript" src="js/60c4fb5e922dbca.js" ></script>
+<script type="text/javascript" src="js/eded60037dc7281.js" ></script>
+</html>
+
+
+

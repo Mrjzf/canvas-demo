@@ -1,0 +1,21 @@
+- http://www.webdm.cn/webcode/c13fb961-bbdf-4ef6-8c22-b28e1cb1fe73.html
+- http://www.17sucai.com/preview/869565/2018-09-11/solar/index.html
+- http://www.17sucai.com/preview/11/2017-02-17/xuanzhuan/index.html  css3轨迹
+- http://www.17sucai.com/preview/1673365/2019-05-01/simple/index.html    千纸鹤
+- http://www.17sucai.com/preview/1528155/2019-02-18/pp/index.html 泡泡
+- http://www.17sucai.com/preview/836734/2018-02-03/tt/index.html  行星
+- http://www.htmleaf.com/Demo/201707294657.html   银河系背景   http://www.bluestep.cc/7030/
+- http://www.17sucai.com/preview/1528155/2019-01-23/soundwave/index.html   声波
+- http://www.17sucai.com/preview/1474877/2018-11-17/hd/demo.html    黑洞粒子
+- http://www.17sucai.com/preview/1424582/2018-11-12/lz/demo.html  粒子爆炸
+- http://www.17sucai.com/preview/70442/2018-11-08/SVG/index.html  海底水泡动效
+- http://www.17sucai.com/preview/1160620/2018-10-02/starry/index.html   旋转
+- http://www.17sucai.com/preview/1266961/2018-09-26/lx/demo.html  螺旋波浪
+- http://www.17sucai.com/preview/1160620/2018-09-29/h/demo.html  火环
+- http://www.17sucai.com/preview/869565/2018-09-13/lz/demo.html  彩色粒子旋转  
+- http://www.17sucai.com/preview/578065/2018-04-06/niao/demo.html   飞鸟
+- http://www.17sucai.com/preview/943199/2018-04-01/yh/demo.html   樱花飘落
+- https://edwardzhong.github.io/sites/demo/dist/solar.html   太阳系
+- http://www.17sucai.com/preview/869565/2018-09-12/zm/demo.html  英文字母显示，适合倒计时    http://www.17sucai.com/preview/1076685/2018-02-25/zm/demo.html
+- http://www.17sucai.com/preview/1266961/2018-07-05/yh/demo.html   3d圆球
+- http://www.jq22.com/demo/JBarrager20170105/   弹幕

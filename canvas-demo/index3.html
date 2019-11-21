@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas银河系星空背景</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <div class="container">
+        <canvas id="canvas"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    "use strict";
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width = window.innerWidth;
+    var h = canvas.height = window.innerHeight;
+    var maxStars = 300; //星空点数量
+    var stars = []; //星空点
+    var avatar = []; //头像 
+    var count = 0;
+
+    function init() {
+        animation();
+    }
+
+    //创建星空点canvas
+    var canvasStar = document.createElement('canvas');
+    var ctxStar = canvasStar.getContext("2d");
+    canvasStar.width = 100;
+    canvasStar.height = 100;
+    var xyr = canvasStar.width / 2;
+    //createRadialGradient() 方法创建放射状/圆形渐变对象。 渐变的开始圆的 x 坐标,	渐变的开始圆的 y 坐标,	开始圆的半径, 渐变的结束圆的 x 坐标, 	渐变的结束圆的 y 坐标, 结束圆的半径
+    var gradient = ctxStar.createRadialGradient(xyr, xyr, 0, xyr, xyr, xyr);
+    //addColorStop(stop,color) 方法规定渐变对象中的颜色和位置。 stop:介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。  colo:在 stop 位置显示的 CSS 颜色值
+    gradient.addColorStop(0.025, '#fff');
+    gradient.addColorStop(0.1, '#215b87');
+    gradient.addColorStop(0.25, '#061119');
+    gradient.addColorStop(1, 'transparent');
+    // fillStyle 属性设置或返回用于填充绘画的颜色、渐变或模式。
+    ctxStar.fillStyle = gradient;
+    //beginPath() 方法开始一条路径，或重置当前的路径。
+    ctxStar.beginPath();
+    //arc(x,y,r,sAngle,eAngle,counterclockwise) 方法创建弧/曲线（用于创建圆或部分圆）。 圆的中心的 x 坐标。,圆的中心的 y 坐标。,圆的半径。,起始角，以弧度计（弧的圆形的三点钟位置是 0 度）。,结束角，以弧度计。,可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。
+    ctxStar.arc(xyr, xyr, xyr, 0, Math.PI * 2);
+    //fill() 方法填充当前的图像（路径）。默认颜色是黑色。
+    ctxStar.fill();
+
+    //创建头像canvas
+    var canvasAvatar = document.createElement('canvas');
+    var ctxAvatar = canvasAvatar.getContext('2d');
+    canvasAvatar.width = 100;
+    canvasAvatar.height = 100;
+    var _xyr = canvasAvatar.width / 2;
+    ctxAvatar.beginPath();
+    ctxAvatar.arc(_xyr, _xyr, _xyr, 0, 2 * Math.PI);
+    var img = new Image();
+    img.src = 'http://pic.58pic.com/58pic/15/68/59/71X58PICNjx_1024.jpg';
+    img.onload = function () {
+        circleImg(ctxAvatar, img, 0, 0, 50);
+        ctx.drawImage(canvasAvatar, 0, 0);
+    };
+    ctxAvatar.fill();
+
+    //圆形头像
+    function circleImg(obj, img, x, y, r) {
+        obj.save();
+        var d = 2 * r;
+        var cx = x + r;
+        var cy = y + r;
+        obj.arc(cx, cy, r, 0, 2 * Math.PI);
+        obj.clip();
+        obj.drawImage(img, x, y, d, d);
+        obj.restore();
+    }
+
+
+    var Star = function () {
+        this.orbitRadius = random(w / 2 - 50);
+        this.radius = random(100, this.orbitRadius) / 10;
+        this.orbitX = w / 2;
+        this.orbitY = h / 2;
+        this.timePassed = random(0, maxStars);
+        this.speed = random(this.orbitRadius) / 100000;
+        this.alpha = random(2, 10) / 10;
+        count++;
+        stars[count] = this;
+    }
+
+    Star.prototype.draw = function () {
+        // var x = Math.sin(this.timePassed + 1) * this.orbitRadius + this.orbitX;
+        // var y = Math.cos(this.timePassed) * this.orbitRadius / 2 + this.orbitY;
+        var x = Math.cos(this.timePassed + 2.5) * this.orbitRadius + this.orbitX;
+        var y = Math.sin(this.timePassed) * this.orbitRadius / 2.6 + this.orbitY;
+        var twinkle = random(10);
+
+        if (twinkle === 1 && this.alpha > 0) {
+            this.alpha -= 0.05;
+        } else if (twinkle === 2 && this.alpha < 1) {
+            this.alpha += 0.05;
+        }
+        //改变星空点的透明度实现闪烁
+        // ctx.globalAlpha = this.alpha;
+        // ctx.drawImage(canvasStar, x - this.radius / 2, y - this.radius / 2, this.radius, this.radius);
+        ctx.drawImage(canvasAvatar, x - this.radius / 2 + 10, y - this.radius / 2 + 20, this.radius, this.radius);
+        this.timePassed += this.speed;
+    }
+
+    for (var i = 0; i < maxStars; i++) {
+        new Star();
+    }
+
+    function animation() {
+        /**globalCompositeOperation 属性设置或返回如何将一个源（新的）图像绘制到目标（已有的）的图像上。
+         * 源图像 = 您打算放置到画布上的绘图。
+         * 目标图像 = 您已经放置在画布上的绘图。
+         * source-over	默认。在目标图像上显示源图像。
+         * globalAlpha 属性设置或返回绘图的当前透明值（alpha 或 transparency）。
+         * lighter	显示源图像 + 目标图像。
+         */
+        ctx.globalCompositeOperation = 'source-over';
+        // ctx.globalAlpha = 0.8;
+        ctx.fillStyle = 'rgba(6,16,25,1)';
+        ctx.fillRect(0, 0, w, h)
+        ctx.globalCompositeOperation = 'lighter';
+        for (var i = 1, l = stars.length; i < l; i++) {
+            stars[i].draw();
+        };
+
+        window.requestAnimationFrame(animation);
+    }
+
+    //获取范围随机数
+    function random(min, max) {
+        if (arguments.length < 2) {
+            max = min;
+            min = 0;
+        }
+
+        if (min > max) {
+            var hold = max;
+            max = min;
+            min = hold;
+        }
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+</script>
+
+</html>

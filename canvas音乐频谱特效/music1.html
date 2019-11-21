@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垂直频谱图</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        canvas,
+        audio {
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas' width="800" height="400"></canvas>
+    <audio id="audio" controls autoplay loop></audio>
+</body>
+<script>
+    // demo地址 https://segmentfault.com/a/1190000017090438
+
+    window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+
+    window.onload = function () {
+        var audio = document.getElementById('audio');
+        audio.crossOrigin = 'anonymous';
+        audio.src = './kiss.mp3';
+        var ctx = new AudioContext();
+        var analyser = ctx.createAnalyser();
+        var audioSrc = ctx.createMediaElementSource(audio);
+        audioSrc.connect(analyser);
+        analyser.connect(ctx.destination);
+        analyser.fftSize = 512;
+
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var cwidth = canvas.width;
+        var cheight = canvas.height - 2;
+        var meterWidth = 5; //方块的宽度
+        var gap = 2; //方块的间距
+        var capHeight = 2;
+        var meterNum = cwidth / (meterWidth + gap);
+        var gradient = ctx.createLinearGradient(0, 0, 0, cheight);//创建线性渐变
+        gradient.addColorStop(1, '#00ff00');  //规定渐变对象中的颜色和停止位置
+        gradient.addColorStop(0.8, '#ffff00');
+        gradient.addColorStop(0, '#ff0000');
+        ctx.fillStyle = gradient; //填充
+
+        function render() {
+            var array = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(array);
+            var step = Math.round(array.length / meterNum);
+            ctx.clearRect(0, 0, cwidth, cheight);
+            for (var i = 0; i < meterNum; i++) {
+                var value = array[i * step];
+                ctx.fillRect(i * (meterWidth + gap), cheight - value + capHeight, meterWidth, cheight || capHeight);
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    };
+</script>
+
+</html>

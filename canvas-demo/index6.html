@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>canvas粒子宇宙</title>
+
+
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+
+        canvas {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canv'></canvas>
+</body>
+<script>
+    window.requestAnimFrame = (function () {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+    })();
+    window.addEventListener('load', start, false);
+
+    var avatar = [];
+
+    var c,
+        $,
+        w,
+        h,
+        msX,
+        msY,
+        midX,
+        midY,
+        num = 59, //显示数量
+        parts = [],
+        begin = 50,
+        repeat = 20,
+        end = Math.PI * 2,
+        force = null,
+        msdn = false;
+
+    function start() {
+        c = document.getElementById('canv');
+        $ = c.getContext('2d');
+        // w = c.width = window.innerWidth;
+        // h = c.height = window.innerHeight;
+        w = c.width = 1340;
+        h = c.height = 730;
+        midX = w / 2;
+        midY = h / 2;
+        force = Math.max(w, h) * 0.09;
+        flow = begin;
+
+        window.requestAnimFrame(create);
+    }
+
+    function create() {
+        var n = num;
+        while (n--) {
+            var p = new Part();
+            p.deg = Math.floor(Math.random() * 360);
+            // p.rad = Math.floor(Math.random() * w * 0.5);
+            p.rad = random(160, 660);
+            p.x = p.distX = Math.floor(Math.random() * w);
+            p.y = p.distY = Math.floor(Math.random() * h);
+            // p.size = 1 + Math.floor(Math.random() * (p.rad * 0.05));
+            p.size = random(12, 22);
+            parts[n] = p;
+        }
+
+        var int = setInterval(function () {
+            flow--;
+            if (flow === repeat) clearInterval(int);
+        }, 20);
+
+        run();
+    }
+
+
+    function run() {
+        // window.requestAnimFrame(run);
+        setTimeout(function () {
+            run();
+        }, 20);
+        go();
+    }
+
+    function go() {
+        $.globalCompositeOperation = 'source-over';
+        // $.fillStyle = 'hsla(242, 30%, 5%, .55)';
+        $.fillRect(0, 0, w, h);
+        var bgImg = new Image();
+        bgImg.src = './bg.png';
+        $.drawImage(bgImg, 0, 0, w, h);
+        $.globalCompositeOperation = 'lighter';
+        var mx = msX;
+        var my = msY;
+        var bounds = force;
+        if (msdn) {
+            bounds = force * 2;
+        }
+        var n = num;
+        while (n--) {
+            var p = parts[n];
+            var radi = Math.PI / 180 * p.deg;
+            p.distX = midX + p.rad * Math.cos(radi + 0.2);
+            p.distY = midY + p.rad * Math.sin(radi) * 0.4;
+            p.x += ((p.distX - p.x) / flow);
+            p.y += ((p.distY - p.y) / flow);
+            var x = p.x - 60;
+            var y = p.y - 30;
+            var s = p.size * (p.y * 1.5 / h);
+            $.beginPath();
+            // $.fillStyle = p.color;
+            // $.arc(x, y, s, 0, end, true);
+            var img = new Image();
+            img.src = './qqImg/1 (' + n + ').jpg';
+            circleImg($, img, x, y, s);
+            $.fill();
+            $.closePath();
+            var vary;
+            if (p.size < 2) {
+                vary = 4;
+            } else if (p.size < 3) {
+                vary = 3;
+            } else if (p.size < 4) {
+                vary = 2;
+            } else {
+                vary = 1;
+            }
+            vary *= (p.y / (h * 0.9));
+            p.deg += vary;
+            p.deg = p.deg % 360;
+        }
+    }
+
+    //圆形头像
+    function circleImg(obj, img, x, y, r) {
+        obj.save();
+        var d = 2 * r;
+        var cx = x + r;
+        var cy = y + r;
+        obj.arc(cx, cy, r, 0, 2 * Math.PI);
+        obj.clip();
+        obj.drawImage(img, x, y, d, d);
+        obj.restore();
+    }
+
+
+    function Part() {
+        this.deg = 0;
+        this.rad = 0;
+        this.x = 0;
+        this.y = 0;
+        this.distX = 0;
+        this.distY = 0;
+        this.color = 'rgb(' + Math.floor(Math.random() * 130) + ',' + Math.floor(Math.random() * 50) + ',' + Math
+            .floor(Math.random() * 100) + ')';
+        this.size;
+    }
+
+    //获取范围随机数
+    function random(min, max) {
+        if (arguments.length < 2) {
+            max = min;
+            min = 0;
+        }
+
+        if (min > max) {
+            var hold = max;
+            max = min;
+            min = hold;
+        }
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+</script>
+
+</html>
